@@ -1,4 +1,4 @@
-# Deply Rails app to AWS
+# Deploy Rails app to AWS EC2
 
 ### Step 1
 
