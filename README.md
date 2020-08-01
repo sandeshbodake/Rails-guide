@@ -23,7 +23,10 @@ Then run bundle install
 
 ### Step 2
 
-Run command: cap install STAGES=production
+Run command: 
+```
+cap install STAGES=production
+```
 This will install capistrino configuration to rails app
 
 ### Step 3
