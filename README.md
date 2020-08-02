@@ -79,12 +79,12 @@ Launch EC2 instance
 
 For creating AWS instance you can follow https://www.cloudbooklet.com/create-an-ec2-instance-on-aws-with-ubuntu-18-04/
 
-## 1] Update 
+#### 1] Update 
 
 ```
 sudo apt-get update && sudo apt-get -y upgrade
 ```
-## 2] Add new user
+#### 2] Add new user
 ```
 sudo useradd -d /home/deploy -m deploy
 sudo passwd deploy
@@ -126,29 +126,33 @@ deploy    ALL=(ALL:ALL) ALL # make this changes to get all privileges
 ```
 
 
-## 3] Setup ssh-keygen
+#### 3] Setup ssh-keygen
 ```
 su - deploy # go to deploy user group
 ssh-keygen
 
 cat .ssh/id_rsa.pub
+```
+Now, add your ssh key to server's authorized_keys
 
+```
 vi .ssh/authorized_keys # add your id_rsa.pub from local machine to server
 
 ```
 
-4] setup git
+#### 4] setup git
 ```
 sudo apt-get install git
 
 ```
 
-5] Add nginx rules
+### 5] Add nginx rules
 ```
 sudo vi /etc/nginx/sites-available/default
 
 ```
 Open above file and add below code
+Make sure that your app path is correct else your appliction won't start
 
 ```
 upstream app {
@@ -187,34 +191,34 @@ server {
 }  
 ```
 
-6] Setup postgres
-```
+#### 6] Setup postgres
 
+```
 sudo apt-get install postgresql postgresql-contrib libpq-dev
 
-
-sudo -u postgres createuser -s urlshortner #create postgres user
+sudo -u postgres createuser -s your_postgres_user #create postgres user
 
 sudo -u postgres psql
 
-postgres=# \password urlshortner
+postgres=# \password your_postgres_user #setup password
 
-
-sudo -u postgres createdb -O urlshortner urlshortner_production #create postgres database
+sudo -u postgres createdb -O your_postgres_user database_name #create postgres database
 
 ```
 
-7] Setup Ruby
+#### 7] Setup Ruby and RVM
 ```
-su - deploy
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+su - deploy # Make sure that you are in deploy user
+
+gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
 \curl -sSL https://get.rvm.io | bash -s stable
 
+rvm install # This will install latest rvm
 
+```
 
-rvm install 2.2.3
-
-
+```
 gem install bundler --no-ri --no-rdoc
 
 sudo apt-get install build-essential libcurl4-openssl-dev
