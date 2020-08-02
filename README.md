@@ -18,8 +18,10 @@ end
 
 ```
 
-Then run bundle install
-
+Then run 
+```
+bundle install
+```
 
 ### Step 2
 
