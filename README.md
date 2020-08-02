@@ -31,6 +31,7 @@ cap install STAGES=production
 ```
 This will install capistrino configuration to rails app
 
+
 ### Step 3
 
 Update your Capfile like below
@@ -64,33 +65,70 @@ require 'capistrano/puma'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
+
+# Load puma configurations
+install_plugin Capistrano::Puma
 ```
 
+So upto this step we created all local configuration for capistrano, Now let's move towards AWS
 
 ### Step 4
 
 Create Account on AWS
-Launch EC2 ubuntu instance
+Launch EC2 instance
 
+For creating AWS instance you can follow https://www.cloudbooklet.com/create-an-ec2-instance-on-aws-with-ubuntu-18-04/
 
-1] Update 
+## 1] Update 
+
 ```
 sudo apt-get update && sudo apt-get -y upgrade
 ```
-2] Add new user
+## 2] Add new user
 ```
 sudo useradd -d /home/deploy -m deploy
-
-
 sudo passwd deploy
-
-
-deploy ALL=(ALL:ALL) ALL
 ```
 
-3] Setup ssh access server to local
+Now open, 
+```sudo visudo```
+And make following changes,
+
 ```
-su - deploy
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+deploy    ALL=(ALL:ALL) ALL # make this changes to get all privileges
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+```
+
+
+## 3] Setup ssh-keygen
+```
+su - deploy # go to deploy user group
 ssh-keygen
 
 cat .ssh/id_rsa.pub
