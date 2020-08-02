@@ -1,4 +1,4 @@
-# Deploy Rails app to AWS EC2
+# Deploy Rails app to AWS EC2 🚀
 #### Using capistrano + nginx + postgres
 
 ### Step 1
