@@ -30,7 +30,7 @@ Run command:
 ```
 cap install STAGES=production
 ```
-This will install capistrino configuration to rails app
+This will install capistrino configuration in rails app
 
 
 ### Step 3
