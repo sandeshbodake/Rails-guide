@@ -258,7 +258,7 @@ Also create application.yml
 vi your_app_name/shared/config/application.yml
 ```
 
-And add SECRET_KEY_BASE, if you dont know how to create just fire below command
+And add SECRET_KEY_BASE, if you don't know how to create just fire below command
 
 ```
 RAILS_ENV=production bundle exec rake secret
