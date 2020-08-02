@@ -231,7 +231,6 @@ su - deploy # Make sure that you are in deploy user
 mkdir your_app_name
 
 mkdir -p your_app_name/shared/config # Create config folder
-
 ```
 Now create database.yml file and add your configuration
 
@@ -250,7 +249,6 @@ production:
   password: password
   host: localhost
   port: 5432
-
 ```
 
 Also create application.yml
@@ -263,7 +261,6 @@ And add SECRET_KEY_BASE, if you dont know how to create just fire below command
 
 ```
 RAILS_ENV=production bundle exec rake secret
-
 ```
 
 And finally add that secret key to application.yml 
@@ -273,3 +270,31 @@ SECRET_KEY_BASE: your_secret_base
 ```
 
 
+### Step 5
+
+Install nodejs
+
+```
+sudo apt-get install nodejs
+```
+
+
+### Step 6 
+
+Now All Set 🚀
+
+Just run 
+
+```
+cap production deploy
+```
+
+And this commad will automatically deploy your rails app to AWS server
+
+After that, make sure that your puma is working properly
+
+If it's not just restart it
+
+```
+cap production puma:restart
+```
