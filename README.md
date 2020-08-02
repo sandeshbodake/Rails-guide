@@ -1,5 +1,5 @@
 # Deploy Rails app to AWS EC2
-#### using capistrano + nginx + puma
+#### Using capistrano + nginx + puma
 
 ### Step 1
 
