@@ -146,7 +146,7 @@ sudo apt-get install git
 
 ```
 
-### 5] Add nginx rules
+#### 5] Add nginx rules
 ```
 sudo vi /etc/nginx/sites-available/default
 
@@ -216,18 +216,60 @@ gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D69
 
 rvm install # This will install latest rvm
 
-```
-
-```
-gem install bundler --no-ri --no-rdoc
+gem install bundler # install bundler
 
 sudo apt-get install build-essential libcurl4-openssl-dev
+
 sudo apt-get install libxml2-dev
-
-mkdir urlshortner
-mkdir -p urlshortner/shared/config
-nano urlshortner/shared/config/database.yml
-
-
-nano urlshortner/shared/config/application.yml
 ```
+
+#### 8] Create project structure
+
+```
+su - deploy # Make sure that you are in deploy user
+
+mkdir your_app_name
+
+mkdir -p your_app_name/shared/config # Create config folder
+
+```
+Now create database.yml file and add your configuration
+
+```
+vi your_app_name/shared/config/database.yml
+```
+
+And add below configuration
+
+```
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: your_database_nname
+  username: username
+  password: password
+  host: localhost
+  port: 5432
+
+```
+
+Also create application.yml
+
+```
+vi your_app_name/shared/config/application.yml
+```
+
+And add SECRET_KEY_BASE, if you dont know how to create just fire below command
+
+```
+RAILS_ENV=production bundle exec rake secret
+
+```
+
+And finally add that secret key to application.yml 
+
+```
+SECRET_KEY_BASE: your_secret_base
+```
+
+
