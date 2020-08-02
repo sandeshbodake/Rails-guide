@@ -1,5 +1,5 @@
 # Deploy Rails app to AWS EC2
-#### Using capistrano + nginx + puma
+#### Using capistrano + nginx + postgres
 
 ### Step 1
 
@@ -298,4 +298,5 @@ If it's not just restart it
 
 ```
 cap production puma:restart
-```
+``` 
+
