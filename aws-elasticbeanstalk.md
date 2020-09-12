@@ -54,6 +54,15 @@ eb create staging -db.engine postgres
 2020-09-12 15:00:41    INFO    Creating RDS database named: aa19ydkibpws6jb. This may take a few minutes.
 2020-09-12 15:02:15    INFO    Created load balancer named: arn:aws:elasticloadbalancing:ap-south-1:575689566956:loadbalancer/app/awseb-AWSEB-2KHZYMLZHUJA/47bcde8d23c308c5
 2020-09-12 15:02:15    INFO    Created Load Balancer listener named: arn:aws:elasticloadbalancing:ap-south-1:575689566956:listener/app/awseb-AWSEB-2KHZYMLZHUJA/47bcde8d23c308c5/c6766141be366dbc
+
+.....
 ````
 
 
+#### Set env variables
+
+```eb setenv SECRET_KEY_BASE= xxxxxx```
+
+#### Deploy application
+
+```eb deploy staging```
