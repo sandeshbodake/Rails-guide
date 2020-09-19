@@ -36,5 +36,14 @@ sudo apt-get install libssl1.0-dev
 rvm install ruby-{ruby_version}
 ```
 
-:tada That's it 
+### Install Postgres
+
+```
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install postgresql
+```
+
+:tada: That's it 
 *Welcome to ruby world*
