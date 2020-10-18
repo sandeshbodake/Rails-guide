@@ -1,3 +1,5 @@
+### Js standard file format for server side applications
+
 ```
 $(document).ready(function() {
     var s,
