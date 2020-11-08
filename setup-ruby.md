@@ -20,7 +20,7 @@ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703
 *Note:- Please restart your terminal to get things ready*
 
 
-### Install Third party libraries for making things correcltly install
+### Install Third party libraries for making things correctly install
  
 ```
 sudo nano /etc/apt/sources.list
