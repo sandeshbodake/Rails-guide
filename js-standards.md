@@ -18,7 +18,7 @@ $(document).ready(function() {
                 this.phoneNuberValidator()
             },
 
-            phoneNuberValidator: function() {
+            phoneNumberValidator: function() {
                 $(document).on('input', '.phone-number', function() {
                     var number = $(this).val().replace(/[^\d]/g, '')
                     if (number.length == 7) {
